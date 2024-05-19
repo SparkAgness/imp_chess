@@ -7,11 +7,13 @@
 #include <algorithm>
 #include <string>
 #include "field.h"
-#include "player.h"
 
 int HelpSubstrRet(std::string to_find);
 
-class Figure {
+class Figure 
+{
+    friend class Player;
+
     private:
         std::string name;
         int location;
@@ -32,13 +34,13 @@ class Figure {
 
 	Figure(std::string s_name, std::string col)
         {
-        std::string basis_name = s_name.substr(2, 4);
+            std::string basis_name = s_name.substr(2, 4);
 
-        this->name = s_name;
-        this->color = col;	    
-        this->price = HelpSubstrRet(basis_name); 
-	this->price = 0;
-	this->location = 0;
+            this->name = s_name;
+            this->color = col;	    
+            this->price = HelpSubstrRet(basis_name); 
+	    this->price = 0;
+	    this->location = 0;
         };
 
 	
@@ -82,6 +84,7 @@ class Pawn : public Figure
             } 
 	    SetPawnsMoveF();
 	    SetPawnsBeatF();
+            ShowInfoMessage();
 	};
         ~Pawn() 
         {

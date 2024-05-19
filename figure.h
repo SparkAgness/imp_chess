@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "field.h"
+#include "player.h"
 
 int HelpSubstrRet(std::string to_find);
 
