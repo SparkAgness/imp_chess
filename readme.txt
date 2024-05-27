@@ -1,0 +1,3 @@
+In file figures.h the Figure class is redifinited. Vectors of MoveFields and BeatFields has become of mother's class members. They can be changed with SetMvFields/SetBFields methods.
+To Pawn's class it is necessary to realize algorithm of method ConversionTo() for conversion pawn to any figure in the end of vertical's line field is not definited. And whith the whole, integration methods ChangeLocation()+ChangeState()+SetMvFields()+SetBFilelds() need to consolidate to one method. 
+Virtual int MoveFigure() in process. It returns integer to realize THROW-TRY-CATCH to next friend-class'es method to make moving figure by Player!
