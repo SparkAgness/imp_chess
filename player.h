@@ -16,12 +16,19 @@ class Player
 	std::vector<std::string> fig_color {"white", "black"};
         std::string player_color;
 	std::string player_name;
-        std::map<std::string, Figure> figures_kit;
-
     public:
+        struct player_kit {
+            std::vector<Pawn> pawn_kit; //During new figure's type creating, the struct will be supplemented the types
+        } figures_kit;
+	
+        template<typename Type>
+	Type FigCreating(std::string);
+        
+        template<typename Type>
+        Type GetFigure(std::string);
 
-        Figure FigCreating(std::string);
-
+        void PlayerMoveFigure(std::string, int);
+        void FillFiguresKit(Pawn); //Like the struct player_kit, overloading methods will be supplemented as FillFiguresKit void-func
         Player(std::string name, int color)
         {
             this->player_name = name;
@@ -35,11 +42,35 @@ class Player
 	};
 };
 
-Figure Player::FigCreating(std::string f_name)
+void Player::PlayerMoveFigure(std::string fig_name, int destination)
 {
-    Pawn a("f_name", this->color);
-    figures_kit[f_name] = a;
+    int index = char(fig_name[0]) - 'a';
+    if ("pawn" == fig_name.substr(2)) {
+        Pawn& a = this->figures_kit.pawn_kit[index];
+	a.MoveFigure(destination);
+    }
+};
+
+template<typename Type>
+Type Player::FigCreating(std::string f_name)
+{
+    Type a(f_name, this->player_color);
     return a;
 };
 
+void Player::FillFiguresKit(Pawn a)
+{
+    this->figures_kit.pawn_kit.push_back(a);
+};
+
+template<typename Type>
+Type Player::GetFigure(std::string fig_name)
+{
+    if ("pawn" == fig_name.substr(2, 4)) {
+        int index = char(fig_name[0]) - 'a';
+        this->figures_kit.pawn_kit[index].ShowInfoMessage();
+        return this->figures_kit.pawn_kit[0];
+    }
+
+};
 #endif

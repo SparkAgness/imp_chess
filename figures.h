@@ -14,7 +14,7 @@ class Figure
     friend class Player;
     friend class Pawn;
 
-    private:
+    protected:
         std::string name;
         int location;
         int price;
