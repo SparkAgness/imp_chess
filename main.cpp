@@ -7,9 +7,13 @@
 
 int main()
 {
-    Player A("Karpov", 0);
-    A.FillFiguresKit(A.FigCreating<Pawn>("a_pawn"));
-    A.GetFigure<Pawn>("a_pawn");
-    A.PlayerMoveFigure("a_pawn", 3);
-    A.GetFigure<Pawn>("a_pawn");
+    struct Figures_Kit {
+        std::vector<Pawn> pawns_kit;
+    };
+    Figures_Kit white_kit;
+
+    Player Karpov("Karpov", 0);
+    Karpov.FigCreating<Pawn>("a_pawn");
+
 }
+

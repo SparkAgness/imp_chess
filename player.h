@@ -29,6 +29,10 @@ class Player
 
         void PlayerMoveFigure(std::string, int);
         void FillFiguresKit(Pawn); //Like the struct player_kit, overloading methods will be supplemented as FillFiguresKit void-func
+
+	template<typenam Type>
+        Type GetFigure
+
         Player(std::string name, int color)
         {
             this->player_name = name;
