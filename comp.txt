@@ -1,0 +1,43 @@
+In file included from /usr/include/c++/11/bits/char_traits.h:39,
+                 from /usr/include/c++/11/ios:40,
+                 from /usr/include/c++/11/ostream:38,
+                 from /usr/include/c++/11/iostream:39,
+                 from main.cpp:1:
+/usr/include/c++/11/bits/stl_algobase.h: In instantiation of ‘static _OI std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m(_II, _II, _OI) [with _II = const Pawn*; _OI = Pawn*]’:
+/usr/include/c++/11/bits/stl_algobase.h:495:30:   required from ‘_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = const Pawn*; _OI = Pawn*]’
+/usr/include/c++/11/bits/stl_algobase.h:522:42:   required from ‘_OI std::__copy_move_a1(_II, _II, _OI) [with bool _IsMove = false; _II = const Pawn*; _OI = Pawn*]’
+/usr/include/c++/11/bits/stl_algobase.h:530:31:   required from ‘_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = __gnu_cxx::__normal_iterator<const Pawn*, std::vector<Pawn> >; _OI = __gnu_cxx::__normal_iterator<Pawn*, std::vector<Pawn> >]’
+/usr/include/c++/11/bits/stl_algobase.h:620:7:   required from ‘_OI std::copy(_II, _II, _OI) [with _II = __gnu_cxx::__normal_iterator<const Pawn*, std::vector<Pawn> >; _OI = __gnu_cxx::__normal_iterator<Pawn*, std::vector<Pawn> >]’
+/usr/include/c++/11/bits/vector.tcc:238:31:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = Pawn; _Alloc = std::allocator<Pawn>]’
+game.h:38:43:   required from here
+/usr/include/c++/11/bits/stl_algobase.h:385:25: error: use of deleted function ‘Pawn& Pawn::operator=(const Pawn&)’
+  385 |               *__result = *__first;
+      |               ~~~~~~~~~~^~~~~~~~~~
+In file included from main.cpp:5:
+figures.h:50:7: note: ‘Pawn& Pawn::operator=(const Pawn&)’ is implicitly deleted because the default definition would be ill-formed:
+   50 | class Pawn: private Figure
+      |       ^~~~
+figures.h:50:7: error: use of deleted function ‘Figure& Figure::operator=(const Figure&)’
+figures.h:12:7: note: ‘Figure& Figure::operator=(const Figure&)’ is implicitly deleted because the default definition would be ill-formed:
+   12 | class Figure
+      |       ^~~~~~
+figures.h:12:7: error: non-static reference member ‘Figure::fig_characs& Figure::f_c’, cannot use default assignment operator
+figures.h:50:7: error: non-static reference member ‘std::vector<int>& Pawn::dmv’, cannot use default assignment operator
+   50 | class Pawn: private Figure
+      |       ^~~~
+figures.h:50:7: error: non-static reference member ‘std::vector<int>& Pawn::dbv’, cannot use default assignment operator
+In file included from /usr/include/c++/11/bits/char_traits.h:39,
+                 from /usr/include/c++/11/ios:40,
+                 from /usr/include/c++/11/ostream:38,
+                 from /usr/include/c++/11/iostream:39,
+                 from main.cpp:1:
+/usr/include/c++/11/bits/stl_algobase.h: In instantiation of ‘static _OI std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m(_II, _II, _OI) [with _II = Pawn*; _OI = Pawn*]’:
+/usr/include/c++/11/bits/stl_algobase.h:495:30:   required from ‘_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = Pawn*; _OI = Pawn*]’
+/usr/include/c++/11/bits/stl_algobase.h:522:42:   required from ‘_OI std::__copy_move_a1(_II, _II, _OI) [with bool _IsMove = false; _II = Pawn*; _OI = Pawn*]’
+/usr/include/c++/11/bits/stl_algobase.h:530:31:   required from ‘_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = Pawn*; _OI = Pawn*]’
+/usr/include/c++/11/bits/stl_algobase.h:620:7:   required from ‘_OI std::copy(_II, _II, _OI) [with _II = Pawn*; _OI = Pawn*]’
+/usr/include/c++/11/bits/vector.tcc:243:17:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = Pawn; _Alloc = std::allocator<Pawn>]’
+game.h:38:43:   required from here
+/usr/include/c++/11/bits/stl_algobase.h:385:25: error: use of deleted function ‘Pawn& Pawn::operator=(const Pawn&)’
+  385 |               *__result = *__first;
+      |               ~~~~~~~~~~^~~~~~~~~~

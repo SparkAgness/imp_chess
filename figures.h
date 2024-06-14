@@ -13,6 +13,7 @@ class Figure
 {
     friend class Player;
     friend class Pawn;
+    friend class Game;
 
     protected:
         std::string name;
@@ -33,7 +34,8 @@ class Figure
     public:
         Figure(std::string, std::string);
         ~Figure();
-    private:
+        Figure(const Figure&);
+    //private:
         int ChangeLocation(int);
         std::vector<int> GetMvFields();
         std::vector<int> GetBFields();
@@ -47,9 +49,11 @@ class Figure
 	virtual int MoveFigure(int) {return 0;};
 };
 
-class Pawn: private Figure
+class Pawn: public Figure
 {
     friend class Player;
+    friend class Game;
+
     private:
         bool yet_no_motion = true;
 
@@ -58,12 +62,14 @@ class Pawn: private Figure
         std::vector<int>& dmv {dur_mvec};
         std::vector<int>& dbv {dur_bvec};
 
+    public:
 	void SetDurMVec();
         void SetDurBVec();
 	void ChangeState();
         void ConversionTo();
 	int MoveFigure(int);
 
+    //public:
         Pawn(std::string s_name, std::string col) : Figure(s_name, col)
         {
             if ("black" == col) {
@@ -86,6 +92,11 @@ class Pawn: private Figure
             }
 	    ShowInfoMessage();
         };
+
+        Pawn(const Pawn& p) : Figure(p) //copying's constructor
+        {
+            yet_no_motion = p.yet_no_motion; 
+	};
 };
 
 int Pawn::MoveFigure(int ch)
@@ -162,6 +173,16 @@ Figure::Figure(std::string s_name, std::string col)
     this->color = col;
     this->price = HelpSubstrRet(s_name.substr(2,4));
     this->location = 0;
+};
+
+Figure::Figure(const Figure& p) 
+{
+    name = p.name;
+    location = p.location;
+    price = p.price;
+    color = p.color;
+    beat_fields = p.beat_fields;
+    move_fields = p.move_fields;
 };
 
 Figure::~Figure()
